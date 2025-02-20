@@ -3,6 +3,7 @@
 from collections import defaultdict
 
 
+
 #### PART ONE ###
 
 def run_map_reduce(map_f, reduce_f, docs):
@@ -33,10 +34,13 @@ def word_count_map(doc):
       a list of tuples of form (token, 1), where token is a whitespace delimited element of this string.
       
     E.g.
-    >>> word_count_map('i am sam i am')
+    #>>> word_count_map('i am sam i am')
     [('i', 1), ('am', 1), ('sam', 1), ('i', 1), ('am', 1)]
     """
-    ###TODO
+    result = []
+    for word in doc.split():
+        result.append((word, 1))
+    return result
     
     
 
@@ -48,12 +52,13 @@ def word_count_reduce(group):
     Returns:
       tuple of form (token, int), where int is the number of times that token appears
     E.g.
-    >>> word_count_reduce(['i', [1,1]])
+    #>>> word_count_reduce(['i', [1,1]])
     ('i', 2)
     
     NOTE: you should use call the `reduce` function here.
     """
-    ###TODO
+    return (group[0], reduce(lambda x, y: x + y, group[0], group[1]))
+
     
     
 
