@@ -124,8 +124,14 @@ def sentiment_map(doc,
     Returns:
       a list of tuples of form (positive, 1) or (negative, 1)      
     E.g.
-    >>> sentiment_map('it was a terrible waste of time')
+    #>>> sentiment_map('it was a terrible waste of time')
     [('negative', 1), ('negative', 1)]
     """
-    ###TODO
+    result = []
+    for word in doc.split():
+        if word in pos_terms:
+            result.append(("positive", 1))
+        elif word in neg_terms:
+            result.append(("negative", 1))
+    return result
 
